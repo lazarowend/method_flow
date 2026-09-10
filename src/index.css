@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    /* Tema escuro (padrão) — remapeamento dos tons slate usados nas classes */
+    --slate-950: #020617;
+    --slate-900: #0f172a;
+    --slate-800: #1e293b;
+    --slate-700: #334155;
+    --slate-600: #475569;
+    --slate-500: #64748b;
+    --slate-400: #94a3b8;
+    --slate-300: #cbd5e1;
+    --slate-200: #e2e8f0;
+    --slate-100: #f1f5f9;
+    /* Texto de acento (adaptável): é claro no tema escuro, escuro no claro */
+    --accent-strong: #93c5fd;
+    /* Fundo da sidebar: sólido e legível em ambos os temas */
+    --sidebar-bg: rgba(15, 23, 42, 0.95);
+    --sidebar-border: #1e293b;
+    /* Rede de fundo do body: mais suave no tema claro */
+    --body-glow-1: rgba(59, 130, 246, 0.12);
+    --body-glow-2: rgba(34, 211, 238, 0.08);
+    /* Inputs: visual próprio (original no escuro, claro no claro) */
+    --input-bg: #0b1220;
+    --input-border: #2c3a52;
+    --input-placeholder: #5b6b82;
+    --input-text: #e6edf7;
+    --input-focus-ring: rgba(56, 189, 248, 0.35);
+    --input-focus-border: #38bdf8;
+  }
+
+  /* Tema claro */
+  :root[data-theme='light'] {
+    color-scheme: light;
+    --slate-950: #f8fafc;
+    --slate-900: #f1f5f9;
+    --slate-800: #e2e8f0;
+    --slate-700: #cbd5e1;
+    --slate-600: #94a3b8;
+    --slate-500: #64748b;
+    --slate-400: #475569;
+    --slate-300: #334155;
+    --slate-200: #1e293b;
+    --slate-100: #0f172a;
+    --accent-strong: #1d4ed8;
+    --sidebar-bg: rgba(241, 245, 249, 0.98);
+    --sidebar-border: #e2e8f0;
+    --body-glow-1: rgba(59, 130, 246, 0.06);
+    --body-glow-2: rgba(34, 211, 238, 0.05);
+    --input-bg: #ffffff;
+    --input-border: #cbd5e1;
+    --input-placeholder: #94a3b8;
+    --input-text: #1e293b;
+    --input-focus-ring: rgba(37, 99, 235, 0.2);
+    --input-focus-border: #2563eb;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-100 font-sans;
+    background-image:
+      radial-gradient(ellipse 70% 50% at 20% -10%, var(--body-glow-1), transparent),
+      radial-gradient(ellipse 50% 40% at 100% 100%, var(--body-glow-2), transparent);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  /* Scrollbar refinado */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 9999px;
+    border: 2px solid #020617;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+
+  /* Remove setas dos inputs numéricos */
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  /* Date/time picker acompanha o tema (color-scheme herdado de :root) */
+  input[type='date'],
+  input[type='time'] {
+    color-scheme: inherit;
+  }
+
+  ::selection {
+    background: rgba(59, 130, 246, 0.35);
+  }
+}
